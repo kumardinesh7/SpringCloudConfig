@@ -1,8 +1,0 @@
-SELECT cpi.CIRC_PATH_HUM_ID, van.attr_name, cpas.attr_value FROM CIRC_path_attr_settings cpas, VAL_ATTR_NAME van, circ_path_inst cpi WHERE cpas.CIRC_PATH_INST_ID=cpi.CIRC_PATH_INST_ID and van.val_attr_inst_id=cpas.val_attr_inst_id AND van.attr_name='SFDC Service ID';
-
-
-SELECT van.attr_name, cpas.attr_value FROM CIRC_path_attr_settings cpas, VAL_ATTR_NAME van WHERE cpas.attr_value='' AND cpi.CIRC_PATH_HUM_ID = serviceId AND cpas.CIRC_PATH_INST_ID=cpi.CIRC_PATH_INST_ID and van.val_attr_inst_id=cpas.val_attr_inst_id
-
-
-SELECT CIRC_PATH_HUM_ID, COUNT(CIRC_PATH_HUM_ID), cpas.attr_value FROM(SELECT cpi.CIRC_PATH_HUM_ID, van.attr_name, cpas.attr_value FROM CIRC_path_attr_settings cpas, VAL_ATTR_NAME van, circ_path_inst cpi WHERE cpas.CIRC_PATH_INST_ID=cpi.CIRC_PATH_INST_ID and van.val_attr_inst_id=cpas.val_attr_inst_id AND van.attr_name='SFDC Service ID') GROUP BY CIRC_PATH_HUM_ID HAVING COUNT(CIRC_PATH_HUM_ID) > 1;
-
